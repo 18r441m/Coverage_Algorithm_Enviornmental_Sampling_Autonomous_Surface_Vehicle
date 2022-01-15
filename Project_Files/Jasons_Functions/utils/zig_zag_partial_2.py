@@ -5,12 +5,12 @@ from matplotlib.path import Path
 
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from drawline import * 
-from skeleton_to_graph import * # graph = skeleton_to_graph(path)
-from open_or_show_image import *
-from find_line_segment_intersection import *
-from get_negative_image import *
-from find_nearest_white import *
+from .drawline import * 
+from .skeleton_to_graph import * # graph = skeleton_to_graph(path)
+from .open_or_show_image import *
+from .find_line_segment_intersection import *
+from .get_negative_image import *
+from .find_nearest_white import *
 
 
 def zig_zag_partial_2(start_point,end_point,boundary_image, new_image, i , zig_zag_threshold ): #zigzagsize will scale the size of the zig zags

@@ -4,9 +4,9 @@ import numpy as np
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from zig_zag_partial_3 import * #inputs: start_point,end_point,zig_zag_size,zig_zag_image,boundary_image, i
-from skeleton_to_graph import * 
-from drawline import * 
+from .zig_zag_partial_3 import * #inputs: start_point,end_point,zig_zag_size,zig_zag_image,boundary_image, i
+from .skeleton_to_graph import * 
+from .drawline import * 
 
 def zig_zag_full_image_3 ( path_to_skeleton, path_to_boundary_image, zig_zag_width ):
     """makes a full zig zag image ready to be used for traveling salesman solution and then conversion to coordinate points/mission plan

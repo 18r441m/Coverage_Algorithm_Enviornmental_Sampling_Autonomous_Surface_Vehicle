@@ -4,15 +4,15 @@ import cv2
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from erosion_dilation import * 
+from .erosion_dilation import * 
 
-from jasons_skeletonize import * 
+from .jasons_skeletonize import * 
 
-from trim_edges import * # new_array = trim_edges(path,weight_threshold)
+from .trim_edges import * # new_array = trim_edges(path,weight_threshold)
 
-from skeleton_to_graph import * # graph = skeleton_to_graph(path)
+from .skeleton_to_graph import * # graph = skeleton_to_graph(path)
 
-from open_or_show_image import * # image = open_image(path) , show_image(image)
+from .open_or_show_image import * # image = open_image(path) , show_image(image)
 
 
 

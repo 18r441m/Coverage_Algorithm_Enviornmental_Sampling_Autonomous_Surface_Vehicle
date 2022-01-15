@@ -3,13 +3,13 @@ import numpy as np
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from convert_coordinates import *
+from .convert_coordinates import *
 
-from skeleton_to_graph_from_array import * 
+from .skeleton_to_graph_from_array import * 
 
 import matplotlib.pyplot as plt
 
-from open_or_show_image import * 
+from .open_or_show_image import * 
 
 import networkx as nx
 

@@ -5,8 +5,8 @@ import cv2
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from open_or_show_image import *
-from get_negative_image import *
+from .open_or_show_image import *
+from .get_negative_image import *
     
 def overlay_images (image1,image2,make_negative_1, make_negative_2):
     """overlays two images with option to make either negative : note only works with making images with a white background

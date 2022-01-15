@@ -1,9 +1,9 @@
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from skeleton_to_graph_from_array import * 
+from .skeleton_to_graph_from_array import * 
 
-from open_or_show_image import * 
+from .open_or_show_image import * 
 
 import os
 

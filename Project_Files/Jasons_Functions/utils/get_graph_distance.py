@@ -1,7 +1,7 @@
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
-from skeleton_to_graph import *
-from generate_waypoints import *
+from .skeleton_to_graph import *
+from .generate_waypoints import *
 
 def get_graph_distance(waypoint1,waypoint2,path):
     '''

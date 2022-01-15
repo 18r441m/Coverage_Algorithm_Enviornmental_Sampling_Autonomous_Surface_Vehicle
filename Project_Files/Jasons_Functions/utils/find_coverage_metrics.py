@@ -3,33 +3,33 @@ import cv2
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from jasons_skeletonize_from_array import * 
+from .jasons_skeletonize_from_array import * 
 
-from trim_edges import * # new_array = trim_edges(path,weight_threshold)
+from .trim_edges import * # new_array = trim_edges(path,weight_threshold)
 
-from erosion_dilation_from_array import *
+from .erosion_dilation_from_array import *
 
 # from generate_waypoints import *
 
-from inverse_skeletonize_from_array import *
+from .inverse_skeletonize_from_array import *
 
-from overlay_images import *
+from .overlay_images import *
 
-from zig_zag_full_image_2 import *
+from .zig_zag_full_image_2 import *
 
-from write_chinese_post_man_from_graph_csv import *
+from .write_chinese_post_man_from_graph_csv import *
 
-from chinese_post_man_from_graph import *
+from .chinese_post_man_from_graph import *
 
-from skeleton_to_graph_from_array import *
+from .skeleton_to_graph_from_array import *
 
-from find_nearest_white import *
+from .find_nearest_white import *
 
 import numpy as np
 
-def find_coverage_metrics_from_array (boundary,zig_zag):
+def find_coverage_metrics (boundary_path,zig_zag_path):
     '''
-    inputs : boundary image array, zig zag skeleton image
+    inputs : boundary image, zig zag skeleton image
     outputs : useful metrics : mean distance to sampled point, max distance from sampled point 
 
     for point on boundary image -not boundary- 
@@ -40,6 +40,14 @@ def find_coverage_metrics_from_array (boundary,zig_zag):
         
     return max_distance,mean_distance,points_sum,distance_sum,distance_graph
     '''
+    # boundary_path = r'./Pipeline_july27/e_d_image.png'
+    # zig_zag_path = r'./Pipeline_july27/zigzag_full.png'
+    boundary = open_image(boundary_path)
+    zig_zag = open_image(zig_zag_path) 
+    # show_image(zig_zag)
+    # print(zig_zag)
+    # zig_zag_graph = skeleton_to_graph_from_array(zig_zag)
+
     # print (boundary.shape)
     distance_graph = boundary # to save the distances at each point
     max_distance = 0

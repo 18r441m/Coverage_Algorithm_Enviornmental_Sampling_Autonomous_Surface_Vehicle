@@ -5,12 +5,12 @@ from matplotlib.path import Path
 
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from drawline import * 
-from skeleton_to_graph import * # graph = skeleton_to_graph(path)
-from open_or_show_image import *
-from find_line_segment_intersection import *
-from get_negative_image import *
-from find_nearest_white import *
+from .drawline import * 
+from .skeleton_to_graph import * # graph = skeleton_to_graph(path)
+from .open_or_show_image import *
+from .find_line_segment_intersection import *
+from .get_negative_image import *
+from .find_nearest_white import *
 
 #from https://stackoverflow.com/questions/25837544/get-all-points-of-a-straight-line-in-python
 def get_line(x1, y1, x2, y2):

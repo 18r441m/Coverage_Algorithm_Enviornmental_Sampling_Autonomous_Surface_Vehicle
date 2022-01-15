@@ -3,29 +3,29 @@ import cv2
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from jasons_skeletonize_from_array import * 
+from utils.jasons_skeletonize_from_array import * 
 
-from trim_edges import * # new_array = trim_edges(path,weight_threshold)
+from utils.trim_edges import * # new_array = trim_edges(path,weight_threshold)
 
-from erosion_dilation_from_array import *
+from utils.erosion_dilation_from_array import *
 
-from inverse_skeletonize_from_array import *
+from utils.inverse_skeletonize_from_array import *
 
-from overlay_images import *
+from utils.overlay_images import *
 
-from zig_zag_full_image_3 import *
+from utils.zig_zag_full_image_3 import *
 
-from write_chinese_post_man_from_graph_csv import *
+from utils.write_chinese_post_man_from_graph_csv import *
 
-from chinese_post_man_from_graph import *
+from utils.chinese_post_man_from_graph import *
 
-from find_coverage_metrics_from_array import *
+from utils.find_coverage_metrics_from_array import *
 
-from get_graph_distance import *
+from utils.get_graph_distance import *
 
-from find_coverage_metrics_from_array import *
+from utils.find_coverage_metrics_from_array import *
 
-from generate_waypoints import *
+from utils.generate_waypoints import *
 
 
 

@@ -8,7 +8,7 @@ import pandas as pd
 import math
 import os
 
-from convert_coordinates import *
+from .convert_coordinates import *
 
 '''
 NOTE: all tests and experiments are in the test_generate_waypoints.py

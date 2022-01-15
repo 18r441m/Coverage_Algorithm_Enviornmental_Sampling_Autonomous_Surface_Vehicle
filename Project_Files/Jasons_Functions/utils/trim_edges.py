@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
 
-from skeleton_to_graph import * # graph = skeleton_to_graph(path)
-from open_or_show_image import * # image = open_image(path) , show_image(image)
-from locate_nodes import * # total_skeleton,node_locations,edge_locations,endpoint_locations,island_locations = locate_nodes(path)
+from .skeleton_to_graph import * # graph = skeleton_to_graph(path)
+from .open_or_show_image import * # image = open_image(path) , show_image(image)
+from .locate_nodes import * # total_skeleton,node_locations,edge_locations,endpoint_locations,island_locations = locate_nodes(path)
 
 def trim_edges(path,weight_threshold):
     """takes in path to image and weight threshold to trim from 
