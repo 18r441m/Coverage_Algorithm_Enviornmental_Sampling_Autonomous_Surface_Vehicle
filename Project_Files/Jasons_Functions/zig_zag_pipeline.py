@@ -245,3 +245,6 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     generate_waypoints(input_dir + line_pttrn, input_dir + config_file_line, out_file_type)
     
     return 0
+
+# temporary function call TODO
+zig_zag_pipeline('/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png','/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf','34.02675, -81.2253')

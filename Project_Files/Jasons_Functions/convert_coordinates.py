@@ -159,8 +159,9 @@ def convert_latlong_to_xy(LONG, LAT, config_file):
     # print("y lat diff : ", ytemp )
 
 
-    x_coord = (- LONG + upper_long_lat[0]) / resolution[0] # x resoltion #TODO: can replace resolution with dictionry and lookup for resolution['x']
-    y_coord = (- LAT + upper_long_lat[1]) / resolution[1] # y_resoltuon
+    # Temporary fix TODO
+    x_coord = (- float(LONG) + upper_long_lat[0]) / resolution[0] # x resoltion #TODO: can replace resolution with dictionry and lookup for resolution['x']
+    y_coord = (- float(LAT) + upper_long_lat[1]) / resolution[1] # y_resoltuon
 
     xy_coordinates = (int((x_coord)), int((y_coord)))
     return xy_coordinates 
