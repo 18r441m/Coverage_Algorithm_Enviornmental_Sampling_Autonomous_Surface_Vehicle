@@ -1,4 +1,6 @@
-import cv2 
+import cv2
+import os 
+import datetime
 
 # import sys
 # sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
@@ -27,9 +29,6 @@ from utils.find_coverage_metrics_from_array import *
 
 from utils.generate_waypoints import *
 
-
-
-
 def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_long):
 # def zig_zag_pipeline():
     '''
@@ -52,8 +51,10 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     config_file = path_to_config_file
     launch_point = launch_point_lat_long # for jakes landing (34.02675, -81.2253)
 
+    datetimenow = datetime.datetime.now().strftime("%m-%d-%Y_%H:%M:%S")
+    output_path = os.getcwd() + '/results/zig_zag_pipeline/' + datetimenow + '/'
+    os.makedirs(output_path)
 
-    
     
     image = open_image(path)
     option = 2 # 1 = erode first 2 = dialate first 
@@ -61,8 +62,7 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     num_dilations = 4
 
     e_d_image  = erosion_dilation_from_array(image,option,num_erosions,num_dilations)
-
-    cv2.imwrite('e_d_image.png', e_d_image)
+    cv2.imwrite(output_path + 'e_d_image.png', e_d_image) # Corrected output path TODO
 
     # skeletonize 
     med_axis , skeleton , skeleton_lee , thinned , thinned_partial = jasons_skeletonize_from_array(e_d_image)
@@ -75,9 +75,9 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     weight_threshold = 42 # this is one of those 
     for skel in skeletons:
 
-        cv2.imwrite('temp_skel_img.png', skel)
+        cv2.imwrite(output_path + 'temp_skel_img.png', skel)
 
-        new_array , new_image = trim_edges('temp_skel_img.png',weight_threshold)
+        new_array , new_image = trim_edges(output_path + 'temp_skel_img.png',weight_threshold)
         trimmed_skeletons.append(new_image)
         
         
@@ -103,7 +103,7 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     image2 = (lotsa_inverse_skeletons[3][0]>0)*255 # grab skeleton lee, medial axis 
     # show_image(image1)
     # show_image(image2)
-    cv2.imwrite( "medial_axis_inverse_skeleton.png", image2*255 )
+    cv2.imwrite(output_path + "medial_axis_inverse_skeleton.png", image2*255 )
 
     make_negative_1 = False
     make_negative_2 = True
@@ -128,8 +128,8 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     skel_name = 'zig_zag_skeleton.png'
     bound_name = 'overlay_boundary_image.png'
 
-    cv2.imwrite( skel_name, trimmed_skeletons[3] )
-    cv2.imwrite( bound_name, new_image*255 )
+    cv2.imwrite( output_path + skel_name, trimmed_skeletons[3] )
+    cv2.imwrite( output_path + bound_name, new_image*255 )
 
 
     #create full zig zag, this time with modified zig zag that prevents overlapping paths ---------------------------------------------------------
@@ -141,19 +141,19 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     # arbitrary value alert!!!! *************************************************
     zig_zag_width = 16 #used to be 8 but this should speed things up
 
-    image,zig_zag_points_dict = zig_zag_full_image_3 ( path_to_skeleton, path_to_boundary_image, zig_zag_width) 
+    image,zig_zag_points_dict = zig_zag_full_image_3 ( output_path + path_to_skeleton, output_path + path_to_boundary_image, zig_zag_width) 
 
     # show_image(image)
 
     zig_zag_name = 'zigzag_full.png'
 
-    cv2.imwrite(zig_zag_name, image )
+    cv2.imwrite(output_path + zig_zag_name, image )
 
     #create csv file from zig zag full --------------------------------------------------------------------------------------------------------------------
 
     # arbitrary value alert!!!! *************************************************
     lee_skel = trimmed_skeletons[3]
-    name = 'trim_skel_graph.csv'
+    name = output_path + 'trim_skel_graph.csv'
 
     graph = skeleton_to_graph_from_array(lee_skel)
 
@@ -185,13 +185,13 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     waypoint2 = convert_xy_to_latlong(0, 1, config_file)
 
     #use those points to calculate distance ---- this could be streamlined by getting the arbitrary points inside get_graph_distance later 
-    total_distance, weight_sum , unit_distance = get_graph_distance(waypoint1,waypoint2,path)
+    total_distance, weight_sum , unit_distance = get_graph_distance(waypoint1,waypoint2,output_path + path)
     print("total distance (meters) : " , total_distance )
 
     # Calculate MEAN DISTANCE TO SAMPLED POINT as well--------------------------------------------------------------------------------------------------------------
 
-    boundary_path = r'e_d_image.png' # can get these from earlier in the code instead 
-    zig_zag_path = r'zigzag_full.png'
+    boundary_path = output_path + r'e_d_image.png' # can get these from earlier in the code instead 
+    zig_zag_path = output_path + r'zigzag_full.png'
     boundary = open_image(boundary_path)
     zig_zag = open_image(zig_zag_path) 
     # show_image(zig_zag)
@@ -200,13 +200,13 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
 
     print("coverage metrics: \n max distance: ", max_distance,"mean distance: ", mean_distance)
     plt.imshow(distance_graph, cmap=plt.cm.jet)
-    plt.savefig("heatmap.png")
+    plt.savefig(output_path + "heatmap.png")
     plt.show()
 
 
     #create file of x,y coordinate points in the order of cpp -----------------------------------------------------------------------------
 
-    f = open("coordinates.txt", "w")
+    f = open(output_path + "coordinates.txt", "w")
     # f.write()
 
     edges = graph.edges()
@@ -233,7 +233,7 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
 
     # input_dir = "/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Pipeline_july27/" #path to line_pttrn, config_file_line, out_file_type
     input_dir = ""
-    line_pttrn = "coordinates.txt" # coordinate file 
+    line_pttrn = output_path + "coordinates.txt" # coordinate file 
     config_file_line = config_file #config file 
 
     out_file_type = "c" #option = m (stands for mission palnner) or c (csv file)

@@ -1,3 +1,9 @@
+'''
+NOTE: 18r441m
+Revist and correct the paths
+'''
+
+
 import numpy as np
 import cv2 
 
