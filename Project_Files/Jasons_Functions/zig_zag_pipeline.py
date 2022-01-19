@@ -52,7 +52,7 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     launch_point = launch_point_lat_long # for jakes landing (34.02675, -81.2253)
 
     datetimenow = datetime.datetime.now().strftime("%m-%d-%Y_%H:%M:%S")
-    output_path = os.getcwd() + '/results/zig_zag_pipeline/' + datetimenow + '/'
+    output_path = os.getcwd() + '/results/' + datetimenow + '/'
     os.makedirs(output_path)
 
     
