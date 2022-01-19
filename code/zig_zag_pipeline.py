@@ -1,37 +1,25 @@
 import cv2
-import os 
+import os
 import datetime
 
-# import sys
-# sys.path.append("/home/jasonraiti/Documents/GitHub/USC_REU/Project_Files/Jasons_Functions/")
-
 from utils.jasons_skeletonize_from_array import * 
-
 from utils.trim_edges import * # new_array = trim_edges(path,weight_threshold)
-
 from utils.erosion_dilation_from_array import *
-
 from utils.inverse_skeletonize_from_array import *
-
 from utils.overlay_images import *
-
 from utils.zig_zag_full_image_3 import *
-
 from utils.write_chinese_post_man_from_graph_csv import *
-
 from utils.chinese_post_man_from_graph import *
-
 from utils.find_coverage_metrics_from_array import *
-
 from utils.get_graph_distance import *
-
 from utils.find_coverage_metrics_from_array import *
-
 from utils.generate_waypoints import *
 
+
 def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_long):
-# def zig_zag_pipeline():
     '''
+    def zig_zag_pipeline():
+
     inputs: path_to_bw_boundaries,path_to_config_file,launch_point_lat_long
     
     some arbitrary settings to pay attention to: 
@@ -39,8 +27,6 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     which skeleton to use [med_axis , skeleton , skeleton_lee , thinned] = skeleton_lee
     which skeleton of skeleton to use [med_axis , skeleton , skeleton_lee , thinned] = medial axis
     zig_zag_width (number of pixels in the base of each triangle)= 8
-
-    
         
     '''
     # erosion dilation -----------------------------------------------------------------------
@@ -247,4 +233,8 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     return 0
 
 # temporary function call TODO
-zig_zag_pipeline('/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png','/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf','34.02675, -81.2253')
+zig_zag_pipeline(
+    '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png',
+    '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf',
+    (34.02675, -81.2253))
+
