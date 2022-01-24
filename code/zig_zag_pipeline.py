@@ -16,10 +16,16 @@ from utils.find_coverage_metrics_from_array import *
 from utils.get_graph_distance import *
 from utils.find_coverage_metrics_from_array import *
 from utils.generate_waypoints import *
-
+'''
 path_to_bw_boundaries = '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png'
 path_to_config_file = '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf'
 launch_point_lat_long = (34.02675, -81.2253)
+'''
+
+
+path_to_bw_boundaries = './input_example/black-and-white.png'
+path_to_config_file = './input_example/test_config.wf'
+launch_point_lat_long = (34.02974, -81.22665)
 
 def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_long):
     '''

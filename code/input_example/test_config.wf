@@ -1,0 +1,21 @@
+World: NA
+
+Upper Left Latitude: 34.03192
+Upper Left Longitude: -81.22992
+Bottom Right Latitude: 34.02951
+Bottom Right Longitude: -81.22634
+
+# --- Sensor location -----#
+Start Point LAT: 34.02974
+Start Point LONG: -81.22665
+
+Image Width: 670
+Image Height: 545
+
+-----
+sensor width: 00 meter #keep but this will be tweaked later
+turn radius: 0 meter
+
+
+
+
