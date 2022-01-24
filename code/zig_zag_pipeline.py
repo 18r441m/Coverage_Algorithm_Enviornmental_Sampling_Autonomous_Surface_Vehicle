@@ -1,3 +1,5 @@
+from doctest import OutputChecker
+from pickle import NONE
 import cv2
 import os
 import datetime
@@ -15,6 +17,9 @@ from utils.get_graph_distance import *
 from utils.find_coverage_metrics_from_array import *
 from utils.generate_waypoints import *
 
+path_to_bw_boundaries = '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png'
+path_to_config_file = '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf'
+launch_point_lat_long = (34.02675, -81.2253)
 
 def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_long):
     '''
@@ -233,8 +238,4 @@ def zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_
     return 0
 
 # temporary function call TODO
-zig_zag_pipeline(
-    '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/ibrahim_test_bw.png',
-    '/home/ibrahim/Desktop/Coverage_Algorithm_Enviornmental_Sampling_Autonomous_Surface_Vehicle/Project_Files/MAPS/Map_originals/Ibrahim_Test/Ibrahim_test_config.wf',
-    (34.02675, -81.2253))
-
+zig_zag_pipeline(path_to_bw_boundaries,path_to_config_file,launch_point_lat_long)
